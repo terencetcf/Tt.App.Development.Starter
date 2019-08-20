@@ -6,9 +6,9 @@ namespace Tt.App.WebApi.Infrastructure.DependencyInjection
 {
     public static class RepositoryServiceCollectionExtensions
     {
-        public static IServiceCollection AddRepositories(this IServiceCollection services, Microsoft.Extensions.Configuration.IConfiguration configuration)
+        public static IServiceCollection AddRepositories(this IServiceCollection services)
         {
-            services.TryAddScoped<IProductRepository, ProductRepository>();
+            services.TryAddScoped<IProductRepository, ProductEfCoreRepository>();
 
             return services;
         }

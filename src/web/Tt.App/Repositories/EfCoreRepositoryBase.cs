@@ -1,19 +1,19 @@
 ﻿using Microsoft.Extensions.Logging;
+using System;
 using Tt.App.Data.EfCore;
 
 namespace Tt.App.Repositories
 {
-    public abstract class RepositoryBase
+    public abstract class EfCoreRepositoryBase : IDisposable
     {
         protected readonly AppDbContext appDbContext;
-        protected readonly ILogger<RepositoryBase> logger;
+        protected readonly ILogger<EfCoreRepositoryBase> logger;
 
         protected bool disposedValue = false;
 
-        public RepositoryBase(AppDbContext appDbContext, ILogger<RepositoryBase> logger)
+        public EfCoreRepositoryBase(AppDbContext appDbContext)
         {
             this.appDbContext = appDbContext;
-            this.logger = logger;
         }
 
         protected virtual void Dispose(bool disposing)
@@ -27,6 +27,11 @@ namespace Tt.App.Repositories
 
                 disposedValue = true;
             }
+        }
+
+        void IDisposable.Dispose()
+        {
+            Dispose(true);
         }
     }
 }

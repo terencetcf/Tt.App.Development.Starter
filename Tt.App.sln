@@ -19,6 +19,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{B570B0
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{A1D95219-7E2C-468E-839C-640264284B0F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tt.App.Data.EfCore.UnitTests", "tests\Tt.App.Data.EfCore.UnitTests\Tt.App.Data.EfCore.UnitTests.csproj", "{A0C75C36-45D0-4043-A613-9124A84390F4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{6AFF09AC-ED09-427C-91C0-6C5D9B5A4779}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6AFF09AC-ED09-427C-91C0-6C5D9B5A4779}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6AFF09AC-ED09-427C-91C0-6C5D9B5A4779}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0C75C36-45D0-4043-A613-9124A84390F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0C75C36-45D0-4043-A613-9124A84390F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0C75C36-45D0-4043-A613-9124A84390F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0C75C36-45D0-4043-A613-9124A84390F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,6 +59,7 @@ Global
 		{52B31008-2A54-4227-9ACD-93A8CDF1842F} = {A1D95219-7E2C-468E-839C-640264284B0F}
 		{712B5164-B895-4780-9733-18694A17F78A} = {B570B09D-250C-4F01-B93F-7ED44C3D0E7D}
 		{6AFF09AC-ED09-427C-91C0-6C5D9B5A4779} = {0341516C-C6DB-4B46-9442-6C5AE6C9A309}
+		{A0C75C36-45D0-4043-A613-9124A84390F4} = {0341516C-C6DB-4B46-9442-6C5AE6C9A309}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AD784720-C82C-4E29-8E0F-14221C5CD966}

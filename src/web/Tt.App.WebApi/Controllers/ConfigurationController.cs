@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Logging;
 using System;
 using Tt.App.WebApi.Configuration;
-using Tt.App.WebApi.Services;
+using Tt.App.Services;
 
 namespace Tt.App.WebApi.Controllers
 {

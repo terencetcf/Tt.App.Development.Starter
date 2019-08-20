@@ -8,6 +8,8 @@ namespace Tt.App.Mappers
     public interface IProductMapper
     {
         ICollection<Product> Map(ICollection<Db.Product> products);
+
+        Product Map(Db.Product product);
     }
 
     public class ProductMapper : MapperBase, IProductMapper
@@ -19,6 +21,11 @@ namespace Tt.App.Mappers
         public ICollection<Product> Map(ICollection<Db.Product> products)
         {
             return mapper.Map<ICollection<Product>>(products);
+        }
+
+        public Product Map(Db.Product product)
+        {
+            return mapper.Map<Product>(product);
         }
     }
 }

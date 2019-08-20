@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Tt.App.WebApi.Services
+namespace Tt.App.Services
 {
     public interface ITimeService
     {

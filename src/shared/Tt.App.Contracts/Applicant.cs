@@ -1,4 +1,6 @@
-﻿namespace Tt.App.Contracts
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Tt.App.Contracts
 {
     public class Applicant
     {
@@ -6,6 +8,7 @@
 
         public int PersonTitleId { get; set; }
 
+        [Required]
         public string FirstName { get; set; }
 
         public string LastName { get; set; }

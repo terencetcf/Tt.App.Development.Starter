@@ -27,9 +27,9 @@ namespace Tt.App.WebApi
 
             services
                 .AddAppConfiguration(Configuration)
-                .AddRepositories(Configuration)
-                .AddMappers(Configuration)
-                .AddServices(Configuration);
+                .AddRepositories()
+                .AddMappers()
+                .AddServices();
 
             services
                 .AddMvc()

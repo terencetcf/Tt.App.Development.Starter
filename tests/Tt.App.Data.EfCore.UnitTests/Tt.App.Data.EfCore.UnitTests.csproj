@@ -7,15 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="9.0.0" />
-    <PackageReference Include="FluentAssertions" Version="5.8.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="2.2.6" />
     <PackageReference Include="nunit" Version="3.12.0" />
     <PackageReference Include="NUnit3TestAdapter" Version="3.14.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.2.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\web\Tt.App\Tt.App.csproj" />
+    <ProjectReference Include="..\..\src\data\Tt.App.Data.EfCore\Tt.App.Data.EfCore.csproj" />
   </ItemGroup>
 
 </Project>
