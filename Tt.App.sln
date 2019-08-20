@@ -3,17 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29201.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tt.App.WebApi", "Tt.App.WebApi\Tt.App.WebApi.csproj", "{4CC1C4DB-337B-4059-9361-66197AA57DC3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tt.App.WebApi", "src\web\Tt.App.WebApi\Tt.App.WebApi.csproj", "{4CC1C4DB-337B-4059-9361-66197AA57DC3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tt.App.Data.EfCore", "Tt.App.Data.EfCore\Tt.App.Data.EfCore.csproj", "{52B31008-2A54-4227-9ACD-93A8CDF1842F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tt.App.Data.EfCore", "src\data\Tt.App.Data.EfCore\Tt.App.Data.EfCore.csproj", "{52B31008-2A54-4227-9ACD-93A8CDF1842F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tt.App.Contracts", "Tt.App.Contracts\Tt.App.Contracts.csproj", "{712B5164-B895-4780-9733-18694A17F78A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tt.App.Contracts", "src\shared\Tt.App.Contracts\Tt.App.Contracts.csproj", "{712B5164-B895-4780-9733-18694A17F78A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tt.App", "Tt.App\Tt.App.csproj", "{0D1F2B44-4372-44E7-A517-D58A85C1AEAE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tt.App", "src\web\Tt.App\Tt.App.csproj", "{0D1F2B44-4372-44E7-A517-D58A85C1AEAE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{0341516C-C6DB-4B46-9442-6C5AE6C9A309}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tt.App.UnitTests", "Tt.App.UnitTests\Tt.App.UnitTests.csproj", "{6AFF09AC-ED09-427C-91C0-6C5D9B5A4779}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tt.App.UnitTests", "tests\Tt.App.UnitTests\Tt.App.UnitTests.csproj", "{6AFF09AC-ED09-427C-91C0-6C5D9B5A4779}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{B570B09D-250C-4F01-B93F-7ED44C3D0E7D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{A1D95219-7E2C-468E-839C-640264284B0F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -46,6 +50,8 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{52B31008-2A54-4227-9ACD-93A8CDF1842F} = {A1D95219-7E2C-468E-839C-640264284B0F}
+		{712B5164-B895-4780-9733-18694A17F78A} = {B570B09D-250C-4F01-B93F-7ED44C3D0E7D}
 		{6AFF09AC-ED09-427C-91C0-6C5D9B5A4779} = {0341516C-C6DB-4B46-9442-6C5AE6C9A309}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution

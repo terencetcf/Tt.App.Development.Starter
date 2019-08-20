@@ -15,8 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Tt.App.Contracts\Tt.App.Contracts.csproj" />
-    <ProjectReference Include="..\Tt.App\Tt.App.csproj" />
+    <ProjectReference Include="..\..\src\web\Tt.App\Tt.App.csproj" />
   </ItemGroup>
 
 </Project>
