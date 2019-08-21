@@ -9,8 +9,8 @@ using Tt.App.Data.EfCore;
 namespace Tt.App.Data.EfCore.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20190820114716_initial")]
-    partial class initial
+    [Migration("20190821133752_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,6 +31,23 @@ namespace Tt.App.Data.EfCore.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Products");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Product 1"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Product 2"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Product 3"
+                        });
                 });
 
             modelBuilder.Entity("Tt.App.Data.EfCore.Entities.ProductCategory", b =>
@@ -44,6 +61,18 @@ namespace Tt.App.Data.EfCore.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ProductCategories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Category 1"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Category 2"
+                        });
                 });
 
             modelBuilder.Entity("Tt.App.Data.EfCore.Entities.ProductCategoryProduct", b =>
@@ -57,16 +86,33 @@ namespace Tt.App.Data.EfCore.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("ProductCategoryProduct");
+
+                    b.HasData(
+                        new
+                        {
+                            ProductCategoryId = 1,
+                            ProductId = 1
+                        },
+                        new
+                        {
+                            ProductCategoryId = 2,
+                            ProductId = 2
+                        },
+                        new
+                        {
+                            ProductCategoryId = 1,
+                            ProductId = 3
+                        });
                 });
 
             modelBuilder.Entity("Tt.App.Data.EfCore.Entities.ProductCategoryProduct", b =>
                 {
-                    b.HasOne("Tt.App.Data.EfCore.Entities.ProductCategory")
+                    b.HasOne("Tt.App.Data.EfCore.Entities.ProductCategory", "ProductCategory")
                         .WithMany("ProductCategoryProducts")
                         .HasForeignKey("ProductCategoryId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Tt.App.Data.EfCore.Entities.Product")
+                    b.HasOne("Tt.App.Data.EfCore.Entities.Product", "Product")
                         .WithMany("ProductCategoryProducts")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade);

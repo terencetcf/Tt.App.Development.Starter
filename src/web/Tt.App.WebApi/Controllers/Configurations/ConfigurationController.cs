@@ -4,7 +4,7 @@ using System;
 using Tt.App.WebApi.Configuration;
 using Tt.App.Services;
 
-namespace Tt.App.WebApi.Controllers
+namespace Tt.App.WebApi.Controllers.Configurations
 {
     [Route("api/[controller]")]
     [ApiController]

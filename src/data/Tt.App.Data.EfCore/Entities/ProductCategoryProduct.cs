@@ -4,6 +4,10 @@
     {
         public int ProductCategoryId { get; set; }
 
+        public ProductCategory ProductCategory { get; set; }
+
         public int ProductId { get; set; }
+
+        public Product Product { get; set; }
     }
 }

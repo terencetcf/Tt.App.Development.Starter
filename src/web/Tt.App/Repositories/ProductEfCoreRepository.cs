@@ -17,13 +17,14 @@ namespace Tt.App.Repositories
             this.productMapper = productMapper;
         }
 
-        public async Task<IEnumerable<Product>> GetProducts()
+        public async Task<ICollection<Product>> GetProducts()
         {
             var data = await appDbContext.Products
                 .Include(s => s.ProductCategoryProducts)
+                .ThenInclude(cat => cat.ProductCategory)
                 .AsNoTracking()
                 .ToListAsync();
-            
+
             return productMapper.Map(data);
         }
 

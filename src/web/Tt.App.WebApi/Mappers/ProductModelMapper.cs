@@ -8,7 +8,7 @@ namespace Tt.App.WebApi.Mappers
 {
     public interface IProductModelMapper
     {
-        IEnumerable<ProductModel> Map(IEnumerable<Product> products);
+        ICollection<ProductModel> Map(ICollection<Product> products);
 
         ProductModel Map(Product product);
     }
@@ -19,9 +19,9 @@ namespace Tt.App.WebApi.Mappers
         {
         }
 
-        public IEnumerable<ProductModel> Map(IEnumerable<Product> products)
+        public ICollection<ProductModel> Map(ICollection<Product> products)
         {
-            return mapper.Map<IEnumerable<ProductModel>>(products);
+            return mapper.Map<ICollection<ProductModel>>(products);
         }
 
         public ProductModel Map(Product product)

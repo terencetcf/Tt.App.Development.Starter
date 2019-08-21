@@ -11,7 +11,7 @@ namespace Tt.App.Mappers.Converters
         public ICollection<Product> Convert(ICollection<Db.ProductCategoryProduct> source, ICollection<Product> destination, ResolutionContext context)
         {
 
-            return source?.Select(p => new Product { Id = p.ProductCategoryId }).ToList();
+            return source?.Select(p => new Product { Id = p.ProductCategoryId, Name = p.Product.Name }).ToList();
         }
     }
 }

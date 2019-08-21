@@ -6,7 +6,7 @@ namespace Tt.App.Repositories
 {
     public interface IProductRepository
     {
-        Task<IEnumerable<Product>> GetProducts();
+        Task<ICollection<Product>> GetProducts();
 
         Task<Product> GetProduct(int productId);
     }

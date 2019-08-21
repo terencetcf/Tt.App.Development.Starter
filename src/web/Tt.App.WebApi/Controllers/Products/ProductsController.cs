@@ -6,9 +6,8 @@ using Tt.App.Repositories;
 using Tt.App.WebApi.Mappers;
 using Tt.App.WebApi.Models;
 
-namespace Tt.App.WebApi.Controllers
+namespace Tt.App.WebApi.Controllers.Products
 {
-    [Route("api/[controller]")]
     public class ProductsController : ApiControllerBase
     {
         private readonly IProductRepository productRepository;
@@ -23,7 +22,7 @@ namespace Tt.App.WebApi.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ProductModel>>> GetProducts()
+        public async Task<ActionResult<ICollection<ProductModel>>> GetProducts()
         {
             var products = await productRepository.GetProducts();
             return Ok(productModelMapper.Map(products));

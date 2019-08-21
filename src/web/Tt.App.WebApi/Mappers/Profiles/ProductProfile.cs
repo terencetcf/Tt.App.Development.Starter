@@ -11,6 +11,8 @@ namespace Tt.App.Mappers.Profiles
             public ProductProfile()
             {
                 CreateMap<Contract.Product, ProductModel>();
+
+                CreateMap<Contract.ProductCategory, ProductCategoryModel>();
             }
         }
     }

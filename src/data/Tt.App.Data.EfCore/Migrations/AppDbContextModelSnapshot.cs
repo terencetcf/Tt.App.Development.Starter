@@ -105,12 +105,12 @@ namespace Tt.App.Data.EfCore.Migrations
 
             modelBuilder.Entity("Tt.App.Data.EfCore.Entities.ProductCategoryProduct", b =>
                 {
-                    b.HasOne("Tt.App.Data.EfCore.Entities.ProductCategory")
+                    b.HasOne("Tt.App.Data.EfCore.Entities.ProductCategory", "ProductCategory")
                         .WithMany("ProductCategoryProducts")
                         .HasForeignKey("ProductCategoryId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Tt.App.Data.EfCore.Entities.Product")
+                    b.HasOne("Tt.App.Data.EfCore.Entities.Product", "Product")
                         .WithMany("ProductCategoryProducts")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade);
