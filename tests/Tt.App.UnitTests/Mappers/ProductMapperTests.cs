@@ -1,11 +1,6 @@
 ﻿using AutoMapper;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Tt.App.Mappers;
 using Tt.App.Mappers.Profiles;
 using Tt.App.Contracts;
@@ -39,7 +34,11 @@ namespace Tt.App.UnitTests.Mappers
                     Id = 1,
                     Name = "Product 1",
                     ProductCategoryProducts = new Collection<Db.ProductCategoryProduct>  {
-                        new Db.ProductCategoryProduct { ProductId = 1, ProductCategoryId = 1
+                        new Db.ProductCategoryProduct
+                        {
+                            ProductId = 1,
+                            ProductCategoryId = 1,
+                            ProductCategory = new Db.ProductCategory { Name = "Cat 1" }
                         }
                     }
                 },
@@ -47,7 +46,11 @@ namespace Tt.App.UnitTests.Mappers
                     Id = 2,
                     Name = "Product 2",
                     ProductCategoryProducts = new Collection<Db.ProductCategoryProduct>  {
-                        new Db.ProductCategoryProduct { ProductId = 2, ProductCategoryId = 2
+                        new Db.ProductCategoryProduct
+                        {
+                            ProductId = 2,
+                            ProductCategoryId = 2,
+                            ProductCategory = new Db.ProductCategory { Name = "Cat 2" }
                         }
                     }
                 },
@@ -55,7 +58,11 @@ namespace Tt.App.UnitTests.Mappers
                     Id = 3,
                     Name = "Product 3",
                     ProductCategoryProducts = new Collection<Db.ProductCategoryProduct>  {
-                        new Db.ProductCategoryProduct { ProductId = 3, ProductCategoryId = 1
+                        new Db.ProductCategoryProduct
+                        {
+                            ProductId = 3,
+                            ProductCategoryId = 1,
+                            ProductCategory = new Db.ProductCategory { Name = "Cat 1" }
                         }
                     }
                 }
@@ -69,7 +76,7 @@ namespace Tt.App.UnitTests.Mappers
                     Id = 1,
                     Name = "Product 1",
                     ProductCategories = new Collection<ProductCategory>  {
-                        new ProductCategory { Id = 1 }
+                        new ProductCategory { Id = 1, Name = "Cat 1" }
                     }
                 }
                 ,
@@ -77,14 +84,14 @@ namespace Tt.App.UnitTests.Mappers
                     Id = 2,
                     Name = "Product 2",
                     ProductCategories = new Collection<ProductCategory>  {
-                        new ProductCategory { Id = 2 }
+                        new ProductCategory { Id = 2, Name = "Cat 2" }
                     }
                 },
                 new Product {
                     Id = 3,
                     Name = "Product 3",
                     ProductCategories = new Collection<ProductCategory>  {
-                        new ProductCategory { Id = 1 }
+                        new ProductCategory { Id = 1, Name = "Cat 1" }
                     }
                 }
             });

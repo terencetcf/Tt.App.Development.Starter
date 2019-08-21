@@ -6,7 +6,7 @@ namespace Tt.App.WebApi.Infrastructure.DependencyInjection
 {
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddServices(this IServiceCollection services)
+        public static IServiceCollection AddServiceDescriptors(this IServiceCollection services)
         {
             services.TryAddSingleton<IUtcTimeService, TimeService>();
             services.TryAddSingleton<ITimeService, TimeService>();

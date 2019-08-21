@@ -7,7 +7,7 @@ namespace Tt.App.WebApi.Infrastructure.DependencyInjection
 {
     public static class MapperServiceCollectionExtensions
     {
-        public static IServiceCollection AddMappers(this IServiceCollection services)
+        public static IServiceCollection AddMapperDescriptors(this IServiceCollection services)
         {
             services.TryAddScoped<IProductMapper, ProductMapper>();
             //services.TryAddScoped<IProductModelMapper, ProductModelMapper>();

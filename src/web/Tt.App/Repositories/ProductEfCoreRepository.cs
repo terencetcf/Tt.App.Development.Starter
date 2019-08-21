@@ -32,6 +32,7 @@ namespace Tt.App.Repositories
         {
             var product = await appDbContext.Products
                 .Include(s => s.ProductCategoryProducts)
+                .ThenInclude(cat => cat.ProductCategory)
                 .AsNoTracking()
                 .SingleOrDefaultAsync(p => p.Id == productId);
 

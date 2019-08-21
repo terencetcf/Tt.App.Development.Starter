@@ -8,7 +8,7 @@ namespace Tt.App.WebApi.Infrastructure.DependencyInjection
 {
     public static class ConfigurationServiceCollectionExtensions
     {
-        public static IServiceCollection AddAppConfiguration(this IServiceCollection services, IConfiguration config)
+        public static IServiceCollection AddConfigurationDescriptors(this IServiceCollection services, IConfiguration config)
         {
             services.Configure<NotificationConfiguration>(config.GetSection("Notification"));
 

@@ -6,9 +6,9 @@ using Tt.App.Services;
 
 namespace Tt.App.WebApi.Controllers.Configurations
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class ConfigurationController : ControllerBase
+    [ApiVersion("1.0")]
+    [ApiVersion("2.0")]
+    public class ConfigurationController : ApiControllerBase
     {
         private readonly INotificationConfiguration notificationConfiguration;
         private readonly IUtcTimeService utcTimeService;
@@ -33,6 +33,13 @@ namespace Tt.App.WebApi.Controllers.Configurations
         {
             logger.LogInformation("Log before return utc time :)");
             return utcTimeService.CurrentUtcDateTime;
+        }
+
+        [ApiVersion("2.0")]
+        [HttpOptions("[action]")]
+        public IActionResult ClearCache()
+        {
+            return Accepted();
         }
     }
 }

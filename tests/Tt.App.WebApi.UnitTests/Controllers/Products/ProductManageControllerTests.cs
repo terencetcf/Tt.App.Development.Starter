@@ -41,17 +41,6 @@ namespace Tt.App.WebApi.UnitTests.Controllers.Products
         }
 
         [Test]
-        public async Task Post_IfModelStateIsInvalid_ReturnBadRequest()
-        {
-            var product = new ProductModel();
-            sut.ModelState.AddModelError("Name", "Required");
-
-            var result = (await sut.Post(product)).Result as BadRequestObjectResult;
-
-            Assert.IsNotNull(result);
-        }
-
-        [Test]
         public async Task Post_Always_ReturnExpectedResult()
         {
             var product = new ProductModel();

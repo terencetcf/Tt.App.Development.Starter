@@ -10,7 +10,7 @@ namespace Tt.App.Mappers.Converters
     {
         public ICollection<ProductCategory> Convert(ICollection<Db.ProductCategoryProduct> source, ICollection<ProductCategory> destination, ResolutionContext context)
         {
-            return source?.Select(p => new ProductCategory { Id = p.ProductCategoryId, Name = p.ProductCategory.Name }).ToList();
+            return source?.Select(p => new ProductCategory { Id = p.ProductCategoryId, Name = p.ProductCategory?.Name }).ToList();
         }
     }
 }
