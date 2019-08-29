@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tt.App.WebApi", "src\web\Tt
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tt.App.Data.EfCore", "src\data\Tt.App.Data.EfCore\Tt.App.Data.EfCore.csproj", "{52B31008-2A54-4227-9ACD-93A8CDF1842F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tt.App.Contracts", "src\shared\Tt.App.Contracts\Tt.App.Contracts.csproj", "{712B5164-B895-4780-9733-18694A17F78A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tt.App.Data", "src\data\Tt.App.Data\Tt.App.Data.csproj", "{712B5164-B895-4780-9733-18694A17F78A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tt.App", "src\web\Tt.App\Tt.App.csproj", "{0D1F2B44-4372-44E7-A517-D58A85C1AEAE}"
 EndProject
@@ -15,13 +15,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{0341516C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tt.App.UnitTests", "tests\Tt.App.UnitTests\Tt.App.UnitTests.csproj", "{6AFF09AC-ED09-427C-91C0-6C5D9B5A4779}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{B570B09D-250C-4F01-B93F-7ED44C3D0E7D}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{A1D95219-7E2C-468E-839C-640264284B0F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tt.App.Data.EfCore.UnitTests", "tests\Tt.App.Data.EfCore.UnitTests\Tt.App.Data.EfCore.UnitTests.csproj", "{A0C75C36-45D0-4043-A613-9124A84390F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tt.App.WebApi.UnitTests", "tests\Tt.App.WebApi.UnitTests\Tt.App.WebApi.UnitTests.csproj", "{1D054789-35B9-4068-8B14-BC099D61DFFF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tt.App.WebApi.UnitTests", "tests\Tt.App.WebApi.UnitTests\Tt.App.WebApi.UnitTests.csproj", "{1D054789-35B9-4068-8B14-BC099D61DFFF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,7 +61,7 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{52B31008-2A54-4227-9ACD-93A8CDF1842F} = {A1D95219-7E2C-468E-839C-640264284B0F}
-		{712B5164-B895-4780-9733-18694A17F78A} = {B570B09D-250C-4F01-B93F-7ED44C3D0E7D}
+		{712B5164-B895-4780-9733-18694A17F78A} = {A1D95219-7E2C-468E-839C-640264284B0F}
 		{6AFF09AC-ED09-427C-91C0-6C5D9B5A4779} = {0341516C-C6DB-4B46-9442-6C5AE6C9A309}
 		{A0C75C36-45D0-4043-A613-9124A84390F4} = {0341516C-C6DB-4B46-9442-6C5AE6C9A309}
 		{1D054789-35B9-4068-8B14-BC099D61DFFF} = {0341516C-C6DB-4B46-9442-6C5AE6C9A309}

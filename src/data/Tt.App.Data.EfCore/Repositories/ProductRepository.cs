@@ -1,20 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Tt.App.Contracts;
-using Tt.App.Mappers;
-using Tt.App.Data.EfCore;
+using Tt.App.Data.Repositories;
 
-namespace Tt.App.Repositories
+namespace Tt.App.Data.EfCore.Repositories
 {
-    public class ProductEfCoreRepository : EfCoreRepositoryBase, IProductRepository 
+    public class ProductRepository : RepositoryBase, IProductRepository 
     {
-        private readonly IProductMapper productMapper;
-
-        public ProductEfCoreRepository(AppDbContext appDbContext, IProductMapper productMapper) 
+        public ProductRepository(AppDbContext appDbContext) 
             : base(appDbContext)
         {
-            this.productMapper = productMapper;
         }
 
         public async Task<ICollection<Product>> GetProducts()
@@ -25,10 +21,10 @@ namespace Tt.App.Repositories
                 .AsNoTracking()
                 .ToListAsync();
 
-            return productMapper.Map(data);
+            return data;
         }
 
-        public async Task<Product> GetProduct(int productId)
+        public async Task<Product> GetProduct(string productId)
         {
             var product = await appDbContext.Products
                 .Include(s => s.ProductCategoryProducts)
@@ -36,7 +32,7 @@ namespace Tt.App.Repositories
                 .AsNoTracking()
                 .SingleOrDefaultAsync(p => p.Id == productId);
 
-            return productMapper.Map(product);
+            return product;
         }
     }
 }

@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
-using Tt.App.Repositories;
+using Tt.App.Data.Repositories;
 using Tt.App.WebApi.Mappers;
 using Tt.App.WebApi.Models;
 

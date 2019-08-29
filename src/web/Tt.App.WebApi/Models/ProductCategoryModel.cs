@@ -1,11 +1,11 @@
-﻿using Tt.App.WebApi.Infrastructure.Attributes;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Tt.App.WebApi.Models
 {
     public class ProductCategoryModel
     {
-        [IntegerRequired]
-        public int Id { get; set; }
+        [Required]
+        public string Id { get; set; }
 
         public string Name { get; set; }
     }

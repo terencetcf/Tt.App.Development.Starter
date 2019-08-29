@@ -11,7 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\data\Tt.App.Data.EfCore\Tt.App.Data.EfCore.csproj" />
-    <ProjectReference Include="..\..\shared\Tt.App.Contracts\Tt.App.Contracts.csproj" />
+    <ProjectReference Include="..\..\data\Tt.App.Data\Tt.App.Data.csproj" />
   </ItemGroup>
 
 </Project>

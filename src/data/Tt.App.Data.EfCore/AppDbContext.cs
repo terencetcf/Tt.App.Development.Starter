@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Tt.App.Data.EfCore.Entities;
+using System;
 
 namespace Tt.App.Data.EfCore
 {
@@ -40,21 +40,28 @@ namespace Tt.App.Data.EfCore
             modelBuilder.Entity<ProductCategoryProduct>()
                 .HasKey(s => new { s.ProductCategoryId, s.ProductId });
 
+            var cat1Id = Guid.NewGuid().ToString();
+            var cat2Id = Guid.NewGuid().ToString();
+
             modelBuilder.Entity<ProductCategory>().HasData(
-                new ProductCategory { Id = 1, Name = "Category 1" },
-                new ProductCategory { Id = 2, Name = "Category 2" }
+                new ProductCategory { Id = cat1Id, Name = "Category 1" },
+                new ProductCategory { Id = cat2Id, Name = "Category 2" }
                 );
 
+            var product1Id = Guid.NewGuid().ToString();
+            var product2Id = Guid.NewGuid().ToString();
+            var product3Id = Guid.NewGuid().ToString();
+
             modelBuilder.Entity<Product>().HasData(
-                new Product { Id = 1, Name = "Product 1" },
-                new Product { Id = 2, Name = "Product 2" },
-                new Product { Id = 3, Name = "Product 3" }
+                new Product { Id = product1Id, Name = "Product 1" },
+                new Product { Id = product2Id, Name = "Product 2" },
+                new Product { Id = product3Id, Name = "Product 3" }
                 );
 
             modelBuilder.Entity<ProductCategoryProduct>().HasData(
-                new ProductCategoryProduct { ProductCategoryId = 1, ProductId = 1 },
-                new ProductCategoryProduct { ProductCategoryId = 2, ProductId = 2 },
-                new ProductCategoryProduct { ProductCategoryId = 1, ProductId = 3 }
+                new ProductCategoryProduct { ProductCategoryId = cat1Id, ProductId = product1Id },
+                new ProductCategoryProduct { ProductCategoryId = cat2Id, ProductId = product2Id },
+                new ProductCategoryProduct { ProductCategoryId = cat1Id, ProductId = product3Id }
                 );
         }
     }

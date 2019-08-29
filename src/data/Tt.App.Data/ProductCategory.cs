@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 
-namespace Tt.App.Contracts
+namespace Tt.App.Data
 {
     public class ProductCategory
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         public string Name { get; set; }
 

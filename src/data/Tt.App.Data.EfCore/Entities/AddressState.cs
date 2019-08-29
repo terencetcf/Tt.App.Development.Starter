@@ -1,9 +1,9 @@
-﻿namespace Tt.App.Data.EfCore.Entities
-{
-    public class AddressState
-    {
-        public int Id { get; set; }
+﻿//namespace Tt.App.Data.EfCore.Entities
+//{
+//    public class AddressState
+//    {
+//        public int Id { get; set; }
 
-        public string Name { get; set; }
-    }
-}
+//        public string Name { get; set; }
+//    }
+//}

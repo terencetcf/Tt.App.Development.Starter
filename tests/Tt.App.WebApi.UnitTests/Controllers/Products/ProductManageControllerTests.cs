@@ -5,7 +5,7 @@ using Microsoft.Extensions.Logging;
 using Moq;
 using NUnit.Framework;
 using System.Threading.Tasks;
-using Tt.App.Repositories;
+using Tt.App.Data.Repositories;
 using Tt.App.WebApi.Controllers.Products;
 using Tt.App.WebApi.Mappers;
 using Tt.App.WebApi.Models;

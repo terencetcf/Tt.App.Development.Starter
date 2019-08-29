@@ -1,8 +1,10 @@
-﻿namespace Tt.App.Contracts
+﻿using System;
+
+namespace Tt.App.Data
 {
     public class Address
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         public int AddressStateId { get; set; }
 

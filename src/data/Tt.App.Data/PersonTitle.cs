@@ -1,6 +1,6 @@
-﻿namespace Tt.App.Contracts
+﻿namespace Tt.App.Data
 {
-    public class AddressState
+    public class PersonTitle
     {
         public int Id { get; set; }
 

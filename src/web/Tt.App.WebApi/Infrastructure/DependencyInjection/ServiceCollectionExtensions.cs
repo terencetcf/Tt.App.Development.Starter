@@ -11,6 +11,12 @@ namespace Tt.App.WebApi.Infrastructure.DependencyInjection
             services.TryAddSingleton<IUtcTimeService, TimeService>();
             services.TryAddSingleton<ITimeService, TimeService>();
 
+            services.Scan(scan => scan
+             .FromAssemblyOf<IProductService>()
+                 .AddClasses(classes => classes.AssignableTo<IProductService>())
+                     .As<IProductService>()
+                     .WithScopedLifetime());
+
             return services;
         }
     }

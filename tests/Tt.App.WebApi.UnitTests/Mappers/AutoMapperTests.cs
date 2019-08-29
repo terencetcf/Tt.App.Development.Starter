@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
 using NUnit.Framework;
+using Tt.App.WebApi.Mappers.Profiles;
 
-namespace Tt.App.UnitTests.Mappers
+namespace Tt.App.WebApi.UnitTests.Mappers
 {
     public class AutoMapperTests
     {
@@ -10,7 +11,7 @@ namespace Tt.App.UnitTests.Mappers
         {
             var mapperConfiguration = new MapperConfiguration(cfg =>
             {
-                //cfg.AddProfile(new ProductProfile());
+                cfg.AddProfile(new ProductModelProfile());
             });
 
             mapperConfiguration.AssertConfigurationIsValid();

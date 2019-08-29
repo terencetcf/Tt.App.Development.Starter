@@ -18,41 +18,43 @@ namespace Tt.App.Data.EfCore.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Tt.App.Data.EfCore.Entities.Product", b =>
+            modelBuilder.Entity("Tt.App.Data.Product", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Name");
 
+                    b.Property<string>("ProductCategoryId");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("ProductCategoryId");
 
                     b.ToTable("Products");
 
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            Id = "edf6654f-3612-4914-aa86-1b09ef44e8fd",
                             Name = "Product 1"
                         },
                         new
                         {
-                            Id = 2,
+                            Id = "7f78ff0f-af4d-41d7-8c6a-a836ed3025cc",
                             Name = "Product 2"
                         },
                         new
                         {
-                            Id = 3,
+                            Id = "056754ca-e288-4439-b0bd-8a33afcbfcdc",
                             Name = "Product 3"
                         });
                 });
 
-            modelBuilder.Entity("Tt.App.Data.EfCore.Entities.ProductCategory", b =>
+            modelBuilder.Entity("Tt.App.Data.ProductCategory", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Name");
 
@@ -63,21 +65,21 @@ namespace Tt.App.Data.EfCore.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            Id = "1198eb30-79cb-42ce-a053-037596e053e7",
                             Name = "Category 1"
                         },
                         new
                         {
-                            Id = 2,
+                            Id = "a7f79f0d-e248-406a-9aed-aec22aeb3ac2",
                             Name = "Category 2"
                         });
                 });
 
-            modelBuilder.Entity("Tt.App.Data.EfCore.Entities.ProductCategoryProduct", b =>
+            modelBuilder.Entity("Tt.App.Data.ProductCategoryProduct", b =>
                 {
-                    b.Property<int>("ProductCategoryId");
+                    b.Property<string>("ProductCategoryId");
 
-                    b.Property<int>("ProductId");
+                    b.Property<string>("ProductId");
 
                     b.HasKey("ProductCategoryId", "ProductId");
 
@@ -88,29 +90,36 @@ namespace Tt.App.Data.EfCore.Migrations
                     b.HasData(
                         new
                         {
-                            ProductCategoryId = 1,
-                            ProductId = 1
+                            ProductCategoryId = "1198eb30-79cb-42ce-a053-037596e053e7",
+                            ProductId = "edf6654f-3612-4914-aa86-1b09ef44e8fd"
                         },
                         new
                         {
-                            ProductCategoryId = 2,
-                            ProductId = 2
+                            ProductCategoryId = "a7f79f0d-e248-406a-9aed-aec22aeb3ac2",
+                            ProductId = "7f78ff0f-af4d-41d7-8c6a-a836ed3025cc"
                         },
                         new
                         {
-                            ProductCategoryId = 1,
-                            ProductId = 3
+                            ProductCategoryId = "1198eb30-79cb-42ce-a053-037596e053e7",
+                            ProductId = "056754ca-e288-4439-b0bd-8a33afcbfcdc"
                         });
                 });
 
-            modelBuilder.Entity("Tt.App.Data.EfCore.Entities.ProductCategoryProduct", b =>
+            modelBuilder.Entity("Tt.App.Data.Product", b =>
                 {
-                    b.HasOne("Tt.App.Data.EfCore.Entities.ProductCategory", "ProductCategory")
-                        .WithMany("ProductCategoryProducts")
+                    b.HasOne("Tt.App.Data.ProductCategory")
+                        .WithMany("Products")
+                        .HasForeignKey("ProductCategoryId");
+                });
+
+            modelBuilder.Entity("Tt.App.Data.ProductCategoryProduct", b =>
+                {
+                    b.HasOne("Tt.App.Data.ProductCategory", "ProductCategory")
+                        .WithMany()
                         .HasForeignKey("ProductCategoryId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Tt.App.Data.EfCore.Entities.Product", "Product")
+                    b.HasOne("Tt.App.Data.Product", "Product")
                         .WithMany("ProductCategoryProducts")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade);

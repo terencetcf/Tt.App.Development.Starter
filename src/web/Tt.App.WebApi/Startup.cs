@@ -13,29 +13,32 @@ namespace Tt.App.WebApi
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
+        public readonly IHostingEnvironment environment;
+        public readonly IConfiguration configuration;
 
-        public IConfiguration Configuration { get; }
+        public Startup(IHostingEnvironment environment, IConfiguration configuration)
+        {
+            this.environment = environment;
+            this.configuration = configuration;
+        }
 
         public void ConfigureServices(IServiceCollection services)
         {
             services
-                .AddConfigurationDescriptors(Configuration)
+                .AddConfigurationDescriptors(configuration)
                 .AddRepositoryDescriptors()
                 .AddMapperDescriptors()
                 .AddServiceDescriptors()
                 .AddAutoMapper(typeof(Startup), typeof(TimeService))
-                .AddDbContext(Configuration)
-                .AddApiVersioning(Configuration);
+                .AddDbContext(configuration, environment)
+                .AddApiVersioning(configuration)
+                .AddCors(configuration);
 
             services
                 .AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            services.AddSwaggerGen(Configuration);
+            services.AddSwaggerGen(configuration);
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -54,7 +57,7 @@ namespace Tt.App.WebApi
             app.UseLastRequestTracking()
                .UseHttpsRedirection()
                .UseMvc()
-               .UseSwagger(Configuration);
+               .UseSwagger(configuration);
         }
     }
 }

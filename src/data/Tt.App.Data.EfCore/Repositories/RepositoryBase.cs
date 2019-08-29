@@ -1,17 +1,16 @@
 ﻿using Microsoft.Extensions.Logging;
 using System;
-using Tt.App.Data.EfCore;
 
-namespace Tt.App.Repositories
+namespace Tt.App.Data.EfCore.Repositories
 {
-    public abstract class EfCoreRepositoryBase : IDisposable
+    public abstract class RepositoryBase : IDisposable
     {
         protected readonly AppDbContext appDbContext;
-        protected readonly ILogger<EfCoreRepositoryBase> logger;
+        protected readonly ILogger<RepositoryBase> logger;
 
         protected bool disposedValue = false;
 
-        public EfCoreRepositoryBase(AppDbContext appDbContext)
+        public RepositoryBase(AppDbContext appDbContext)
         {
             this.appDbContext = appDbContext;
         }

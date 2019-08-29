@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using Tt.App.Repositories;
+using Tt.App.Data.EfCore.Repositories;
+using Tt.App.Data.Repositories;
 
 namespace Tt.App.WebApi.Infrastructure.DependencyInjection
 {
@@ -8,7 +9,7 @@ namespace Tt.App.WebApi.Infrastructure.DependencyInjection
     {
         public static IServiceCollection AddRepositoryDescriptors(this IServiceCollection services)
         {
-            services.TryAddScoped<IProductRepository, ProductEfCoreRepository>();
+            services.TryAddScoped<IProductRepository, ProductRepository>();
 
             return services;
         }

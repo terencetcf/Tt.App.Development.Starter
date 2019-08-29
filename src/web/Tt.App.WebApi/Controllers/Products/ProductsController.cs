@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
-using Tt.App.Repositories;
+using Tt.App.Services;
 using Tt.App.WebApi.Mappers;
 using Tt.App.WebApi.Models;
 
@@ -12,13 +12,16 @@ namespace Tt.App.WebApi.Controllers.Products
     /// </summary>
     public class ProductsController : ApiControllerBase
     {
-        private readonly IProductRepository productRepository;
+        private readonly IProductService productService;
         private readonly IProductModelMapper productModelMapper;
         private readonly ILogger<ProductsController> logger;
 
-        public ProductsController(IProductRepository productRepository, IProductModelMapper productModelMapper, ILogger<ProductsController> logger)
+        public ProductsController(
+            IProductService productService, 
+            IProductModelMapper productModelMapper, 
+            ILogger<ProductsController> logger)
         {
-            this.productRepository = productRepository;
+            this.productService = productService;
             this.productModelMapper = productModelMapper;
             this.logger = logger;
         }
@@ -31,7 +34,7 @@ namespace Tt.App.WebApi.Controllers.Products
         [HttpGet]
         public async Task<IActionResult> GetProducts()
         {
-            var products = await productRepository.GetProducts();
+            var products = await productService.GetProducts();
             return Ok(productModelMapper.Map(products));
         }
 
@@ -42,14 +45,14 @@ namespace Tt.App.WebApi.Controllers.Products
         /// <returns>Return the selected product</returns>
         /// <response code="200">Return the selected product</response>
         [HttpGet("{id}")]
-        public async Task<ActionResult<ProductModel>> GetProduct(int id)
+        public async Task<ActionResult<ProductModel>> GetProduct(string id)
         {
-            if (id < 1)
+            if (id == null)
             {
-                return NotFound();
+                return BadRequest();
             }
 
-            var product = await productRepository.GetProduct(id);
+            var product = await productService.GetProduct(id);
             if (product == null)
             {
                 logger.LogInformation("Unable to find the product (id:{0}).", id);

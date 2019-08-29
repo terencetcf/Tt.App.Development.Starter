@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Tt.App.Contracts
+namespace Tt.App.Data
 {
     public class Applicant
     {

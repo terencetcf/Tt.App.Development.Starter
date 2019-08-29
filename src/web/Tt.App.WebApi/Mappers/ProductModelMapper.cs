@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using System.Collections.Generic;
-using Tt.App.Contracts;
+using Tt.App.Data;
 using Tt.App.Mappers;
 using Tt.App.WebApi.Models;
 
