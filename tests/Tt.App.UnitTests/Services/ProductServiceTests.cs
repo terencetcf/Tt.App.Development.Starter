@@ -26,35 +26,35 @@ namespace Tt.App.UnitTests.Services
         }
 
         [Test]
-        public async Task GetProducts_Always_ReturnExpectedResult()
+        public async Task GetProductsAsync_Always_ReturnExpectedResult()
         {
             var response = new Collection<Product>
             {
                 GetMockProduct()
             };
-            mockProductRepository.Setup(s => s.GetProducts()).ReturnsAsync(response);
+            mockProductRepository.Setup(s => s.GetProductsAsync()).ReturnsAsync(response);
 
-            var result = await sut.GetProducts();
+            var result = await sut.GetProductsAsync();
 
             result.Should().BeEquivalentTo(response);
-            mockProductRepository.Verify(s => s.GetProducts(), Times.Once);
+            mockProductRepository.Verify(s => s.GetProductsAsync(), Times.Once);
         }
 
         [Test]
-        public async Task GetProduct_Always_ReturnExpectedResult()
+        public async Task GetProductAsync_Always_ReturnExpectedResult()
         {
             var id = "";
             var response = GetMockProduct();
             mockProductRepository
-                .Setup(s => s.GetProduct(It.IsAny<string>()))
+                .Setup(s => s.GetProductAsync(It.IsAny<string>()))
                 .ReturnsAsync(response)
                 .Callback<string>(param => id = param);
 
-            var result = await sut.GetProduct(ProductId);
+            var result = await sut.GetProductAsync(ProductId);
 
             result.Should().BeEquivalentTo(response);
             id.Should().Be("1");
-            mockProductRepository.Verify(s => s.GetProduct(It.IsAny<string>()), Times.Once);
+            mockProductRepository.Verify(s => s.GetProductAsync(It.IsAny<string>()), Times.Once);
         }
 
         private static Product GetMockProduct()

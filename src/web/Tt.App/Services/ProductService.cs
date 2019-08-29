@@ -7,9 +7,9 @@ namespace Tt.App.Services
 {
     public interface IProductService
     {
-        Task<ICollection<Product>> GetProducts();
+        Task<ICollection<Product>> GetProductsAsync();
 
-        Task<Product> GetProduct(string productId);
+        Task<Product> GetProductAsync(string productId);
     }
 
     public class ProductService : IProductService
@@ -21,14 +21,14 @@ namespace Tt.App.Services
             this.productRepository = productRepository;
         }
 
-        public Task<ICollection<Product>> GetProducts()
+        public Task<ICollection<Product>> GetProductsAsync()
         {
-            return productRepository.GetProducts();
+            return productRepository.GetProductsAsync();
         }
 
-        public Task<Product> GetProduct(string productId)
+        public Task<Product> GetProductAsync(string productId)
         {
-            return productRepository.GetProduct(productId);
+            return productRepository.GetProductAsync(productId);
         }
 
     }

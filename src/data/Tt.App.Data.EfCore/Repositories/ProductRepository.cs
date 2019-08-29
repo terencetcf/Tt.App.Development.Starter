@@ -13,7 +13,7 @@ namespace Tt.App.Data.EfCore.Repositories
         {
         }
 
-        public async Task<ICollection<Product>> GetProducts()
+        public async Task<ICollection<Product>> GetProductsAsync()
         {
             var data = await appDbContext.Products
                 .Include(s => s.ProductCategoryProducts)
@@ -24,7 +24,7 @@ namespace Tt.App.Data.EfCore.Repositories
             return data;
         }
 
-        public async Task<Product> GetProduct(string productId)
+        public async Task<Product> GetProductAsync(string productId)
         {
             var product = await appDbContext.Products
                 .Include(s => s.ProductCategoryProducts)

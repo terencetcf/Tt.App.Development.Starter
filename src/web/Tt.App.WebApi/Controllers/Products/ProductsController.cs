@@ -34,7 +34,7 @@ namespace Tt.App.WebApi.Controllers.Products
         [HttpGet]
         public async Task<IActionResult> GetProducts()
         {
-            var products = await productService.GetProducts();
+            var products = await productService.GetProductsAsync();
             return Ok(productModelMapper.Map(products));
         }
 
@@ -52,7 +52,7 @@ namespace Tt.App.WebApi.Controllers.Products
                 return BadRequest();
             }
 
-            var product = await productService.GetProduct(id);
+            var product = await productService.GetProductAsync(id);
             if (product == null)
             {
                 logger.LogInformation("Unable to find the product (id:{0}).", id);

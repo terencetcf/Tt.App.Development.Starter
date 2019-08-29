@@ -6,8 +6,8 @@ namespace Tt.App.Data.Repositories
 {
     public interface IProductRepository
     {
-        Task<ICollection<Product>> GetProducts();
+        Task<ICollection<Product>> GetProductsAsync();
 
-        Task<Product> GetProduct(string productId);
+        Task<Product> GetProductAsync(string productId);
     }
 }

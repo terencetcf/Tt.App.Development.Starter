@@ -11,18 +11,18 @@ namespace Tt.App.Data.EfCore
 
         public DbSet<ProductCategory> ProductCategories { get; set; }
 
-        private ILoggerFactory GetLoggerFactory()
-        {
-            var serviceCollection = new ServiceCollection();
-            serviceCollection.AddLogging(builder =>
-                builder
-                    .AddConsole()
-                    .AddFilter(DbLoggerCategory.Database.Command.Name, LogLevel.Information));
+        //private ILoggerFactory GetLoggerFactory()
+        //{
+        //    var serviceCollection = new ServiceCollection();
+        //    serviceCollection.AddLogging(builder =>
+        //        builder
+        //            .AddConsole()
+        //            .AddFilter(DbLoggerCategory.Database.Command.Name, LogLevel.Information));
 
-            return serviceCollection
-                .BuildServiceProvider()
-                .GetService<ILoggerFactory>();
-        }
+        //    return serviceCollection
+        //        .BuildServiceProvider()
+        //        .GetService<ILoggerFactory>();
+        //}
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
@@ -30,9 +30,9 @@ namespace Tt.App.Data.EfCore
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder
-                .UseLoggerFactory(GetLoggerFactory())
-                .EnableSensitiveDataLogging();
+            //optionsBuilder
+            //    .UseLoggerFactory(GetLoggerFactory())
+            //    .EnableSensitiveDataLogging();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
