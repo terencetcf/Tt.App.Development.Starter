@@ -8,6 +8,7 @@ using Tt.App.WebApi.Infrastructure.DependencyInjection;
 using Tt.App.WebApi.Infrastructure.Middleware;
 using Tt.App.Services;
 using Tt.App.WebApi.Infrastructure.Builder;
+using IdentityServer4.AccessTokenValidation;
 
 namespace Tt.App.WebApi
 {
@@ -38,6 +39,14 @@ namespace Tt.App.WebApi
                 .AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
+            services
+                .AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
+                .AddIdentityServerAuthentication(options =>
+                {
+                    options.Authority = "https://localhost:44364/";
+                    options.ApiName = "ttappwebapi";
+                });
+
             services.AddSwaggerGen(configuration);
         }
 
@@ -53,6 +62,8 @@ namespace Tt.App.WebApi
             {
                 app.UseHsts();
             }
+
+            app.UseAuthentication();
 
             app.UseLastRequestTracking()
                .UseHttpsRedirection()

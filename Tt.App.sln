@@ -21,6 +21,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tt.App.Data.EfCore.UnitTest
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tt.App.WebApi.UnitTests", "tests\Tt.App.WebApi.UnitTests\Tt.App.WebApi.UnitTests.csproj", "{1D054789-35B9-4068-8B14-BC099D61DFFF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tt.App.Idp", "src\web\Tt.App.Idp\Tt.App.Idp.csproj", "{6D391BFE-A25C-4250-AD66-514F47FA98B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tt.App.WebMvc", "src\web\Tt.App.WebMvc\Tt.App.WebMvc.csproj", "{4E127FBE-5B1E-4C9A-9EA2-FCCDD80C866D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +59,14 @@ Global
 		{1D054789-35B9-4068-8B14-BC099D61DFFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D054789-35B9-4068-8B14-BC099D61DFFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D054789-35B9-4068-8B14-BC099D61DFFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D391BFE-A25C-4250-AD66-514F47FA98B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D391BFE-A25C-4250-AD66-514F47FA98B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D391BFE-A25C-4250-AD66-514F47FA98B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D391BFE-A25C-4250-AD66-514F47FA98B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E127FBE-5B1E-4C9A-9EA2-FCCDD80C866D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E127FBE-5B1E-4C9A-9EA2-FCCDD80C866D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E127FBE-5B1E-4C9A-9EA2-FCCDD80C866D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E127FBE-5B1E-4C9A-9EA2-FCCDD80C866D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

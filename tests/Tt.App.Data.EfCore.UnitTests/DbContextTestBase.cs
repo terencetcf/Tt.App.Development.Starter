@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
+using System;
 
 namespace Tt.App.Data.EfCore.UnitTests
 {
@@ -24,7 +25,7 @@ namespace Tt.App.Data.EfCore.UnitTests
         protected void BuildDbContext()
         {
             optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
-            optionsBuilder.UseInMemoryDatabase("HasSeedData");
+            optionsBuilder.UseInMemoryDatabase(Guid.NewGuid().ToString());
             appDbContext = new AppDbContext(optionsBuilder.Options);
             appDbContext.Database.EnsureCreated();
         }

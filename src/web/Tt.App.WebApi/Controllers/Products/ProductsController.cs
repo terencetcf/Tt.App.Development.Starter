@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System.Linq;
 using System.Threading.Tasks;
 using Tt.App.Services;
 using Tt.App.WebApi.Mappers;
@@ -10,6 +12,7 @@ namespace Tt.App.WebApi.Controllers.Products
     /// <summary>
     /// All products related endpoints
     /// </summary>
+    [Authorize]
     public class ProductsController : ApiControllerBase
     {
         private readonly IProductService productService;
@@ -35,6 +38,15 @@ namespace Tt.App.WebApi.Controllers.Products
         public async Task<IActionResult> GetProducts()
         {
             var products = await productService.GetProductsAsync();
+            var role = User.Claims.FirstOrDefault(c => c.Type == "role")?.Value;
+
+            var test = string.Join(", ", User.Claims.Select(c => c.Type));
+            logger.LogInformation(test);
+            if (role != "admin")
+            {
+                products = products.Take(1).ToList();
+            }
+
             return Ok(productModelMapper.Map(products));
         }
 

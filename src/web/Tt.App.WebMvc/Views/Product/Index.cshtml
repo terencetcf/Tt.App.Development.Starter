@@ -1,0 +1,23 @@
+﻿@model ProductsModel
+@{
+    ViewData["Title"] = "Products";
+}
+
+<h1>Products</h1>
+<table class="table table-dark table-striped table-hover">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Categories</th>
+        </tr>
+    </thead>
+    @foreach (var product in Model.Products)
+    {
+        <tr>
+            <td class="w-25 text-nowrap">@product.Id</td>
+            <td>@product.Name</td>
+            <td>@string.Join(",", product.ProductCategories.Select(c => c.Name))</td>
+        </tr>
+    }
+</table>
