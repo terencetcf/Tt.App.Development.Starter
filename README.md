@@ -11,7 +11,7 @@ This template including the following features for ASP NET CORE 2.2 Web API:
  * Serilog
  * Swagger
  * API Versioning
- * ASP NET CORE MVC (*coming soon*)
+ * ASP NET CORE MVC
  * React & Redux (*coming soon*)
  * MangoDB (*coming soon*)
  
