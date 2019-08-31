@@ -6,10 +6,8 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using Tt.App.WebMvc.Models;
 using Tt.App.WebMvc.Services;
-using IdentityModel.Client;
-using System.Net.Http;
-using System;
 using System.Linq;
+using Microsoft.AspNetCore.Http;
 
 namespace Tt.App.WebMvc.Controllers
 {
@@ -17,10 +15,12 @@ namespace Tt.App.WebMvc.Controllers
     public class ProductController : Controller
     {
         private readonly IProductService productService;
+        private readonly IUserInfoService userInfoService;
 
-        public ProductController(IProductService productService)
+        public ProductController(IProductService productService, IUserInfoService userInfoService)
         {
             this.productService = productService;
+            this.userInfoService = userInfoService;
         }
 
         public async Task<IActionResult> Index()
@@ -39,22 +39,8 @@ namespace Tt.App.WebMvc.Controllers
         [Authorize(Roles = "admin")]
         public async Task<IActionResult> Manage()
         {
-            var client = new HttpClient();
-
-            var accessToken = await HttpContext.GetTokenAsync(OpenIdConnectParameterNames.AccessToken);
-            var disco = await client.GetDiscoveryDocumentAsync("https://localhost:44364");
-            var response = await client.GetUserInfoAsync(new UserInfoRequest
-            {
-                Address = disco.UserInfoEndpoint,
-                Token = accessToken
-            });
-
-            if (response.IsError)
-            {
-                throw new Exception("Problem while accessing the UserInfo endpont with IDP", response.Exception);
-            }
-
-            var address = response.Claims.FirstOrDefault(c => c.Type == "address")?.Value;
+            var claims = await userInfoService.GetClaims();
+            var address = claims.FirstOrDefault(c => c.Type == "address")?.Value;
 
             var model = new ProductsManageModel
             {

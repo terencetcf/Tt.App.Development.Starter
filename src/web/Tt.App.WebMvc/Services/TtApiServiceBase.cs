@@ -14,7 +14,7 @@ namespace Tt.App.WebMvc.Services
 {
     public abstract class TtApiServiceBase
     {
-        protected readonly HttpClient httpClient;
+        private readonly IHttpClientFactory httpClientFactory;
         private readonly IHttpContextAccessor httpContextAccessor;
         private readonly IApiConfiguration apiConfiguration;
         private readonly ILogger<TtApiServiceBase> logger;
@@ -22,35 +22,21 @@ namespace Tt.App.WebMvc.Services
         public TtApiServiceBase(
             IApiConfiguration apiConfiguration,
             IHttpContextAccessor httpContextAccessor,
-            HttpClient httpClient,
+            IHttpClientFactory httpClientFactory,
             ILogger<TtApiServiceBase> logger)
         {
             this.apiConfiguration = apiConfiguration;
             this.httpContextAccessor = httpContextAccessor;
-            this.httpClient = httpClient;
+            this.httpClientFactory = httpClientFactory;
             this.logger = logger;
-        }
-
-        public async Task InitHttpClient()
-        {
-            httpClient.BaseAddress = new Uri(apiConfiguration.TtApiUrl);
-            httpClient.DefaultRequestHeaders.Accept.Clear();
-            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-            var context = httpContextAccessor.HttpContext;
-            var accessToken = await context.GetTokenAsync(OpenIdConnectParameterNames.AccessToken);
-            if (!string.IsNullOrWhiteSpace(accessToken))
-            {
-                httpClient.SetBearerToken(accessToken);
-            }
         }
 
         protected async Task<T> GetAsync<T>(string requestUri)
         {
             try
             {
-                await InitHttpClient();
-                var response = await httpClient.GetAsync(requestUri);
+                var client = await GetHttpClient();
+                var response = await client.GetAsync(requestUri);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -64,6 +50,23 @@ namespace Tt.App.WebMvc.Services
                 logger.LogError(e, $"Failed to get data from api. {GetFullApiUri(requestUri)}");
                 throw e;
             }
+        }
+
+        private async Task<HttpClient> GetHttpClient()
+        {
+            var client = httpClientFactory.CreateClient();
+            client.BaseAddress = new Uri(apiConfiguration.TtApiUrl);
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            var context = httpContextAccessor.HttpContext;
+            var accessToken = await context.GetTokenAsync(OpenIdConnectParameterNames.AccessToken);
+            if (!string.IsNullOrWhiteSpace(accessToken))
+            {
+                client.SetBearerToken(accessToken);
+            }
+
+            return client;
         }
 
         private string GetFullApiUri(string requestUri)

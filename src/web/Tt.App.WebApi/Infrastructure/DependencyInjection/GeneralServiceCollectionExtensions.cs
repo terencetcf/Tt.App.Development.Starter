@@ -4,7 +4,7 @@ using Tt.App.Services;
 
 namespace Tt.App.WebApi.Infrastructure.DependencyInjection
 {
-    public static class ServiceCollectionExtensions
+    public static class GeneralServiceCollectionExtensions
     {
         public static IServiceCollection AddServiceDescriptors(this IServiceCollection services)
         {

@@ -16,7 +16,7 @@
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
     <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="2.7.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="3.1.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="3.1.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.2.6" />
     <PackageReference Include="Scrutor" Version="3.1.0" />
     <PackageReference Include="Serilog.AspNetCore" Version="3.0.0" />
@@ -25,12 +25,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Tt.App\Tt.App.csproj" />
+    <Folder Include="Extensions\" />
+    <Folder Include="Services\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Extensions\" />
-    <Folder Include="Services\" />
+    <ProjectReference Include="..\..\shared\Tt.App\Tt.App.csproj" />
   </ItemGroup>
 
 </Project>

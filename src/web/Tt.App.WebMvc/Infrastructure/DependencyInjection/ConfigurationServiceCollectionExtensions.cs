@@ -11,9 +11,10 @@ namespace Tt.App.WebMvc.Infrastructure.DependencyInjection
         public static IServiceCollection AddConfigurationDescriptors(this IServiceCollection services, IConfiguration config)
         {
             services.Configure<ApiConfiguration>(config.GetSection("ApiConfiguration"));
+            services.Configure<IdpConfiguration>(config.GetSection("IdpConfiguration"));
 
-            services.TryAddSingleton<IApiConfiguration>(sp =>
-                sp.GetRequiredService<IOptions<ApiConfiguration>>().Value);
+            services.TryAddSingleton<IApiConfiguration>(sp => sp.GetRequiredService<IOptions<ApiConfiguration>>().Value);
+            services.TryAddSingleton<IIdpConfiguration>(sp => sp.GetRequiredService<IOptions<IdpConfiguration>>().Value);
 
             return services;
         }

@@ -24,7 +24,8 @@ namespace Tt.App.WebMvc
         {
             services
                 .AddConfigurationDescriptors(Configuration)
-                .AddHttpClients()
+                .AddHttpClient()
+                //.AddHttpClients()
                 .AddServiceDescriptors()
                 .AddCookiesConfigurations()
                 .AddIdpAuthentication(Configuration);

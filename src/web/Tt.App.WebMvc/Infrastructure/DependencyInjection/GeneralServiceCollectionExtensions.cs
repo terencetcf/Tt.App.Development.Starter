@@ -1,5 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
 using Tt.App.WebMvc.Services;
 
 namespace Tt.App.WebMvc.Infrastructure.DependencyInjection
@@ -8,7 +8,13 @@ namespace Tt.App.WebMvc.Infrastructure.DependencyInjection
     {
         public static IServiceCollection AddServiceDescriptors(this IServiceCollection services)
         {
-            services.TryAddScoped<IProductService, ProductService>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            services.Scan(scan => scan
+                .FromAssemblyOf<IProductService>()
+                    .AddClasses(classes => classes.Where(c => c.Name.EndsWith("Service")))
+                        .AsImplementedInterfaces()
+                        .WithScopedLifetime());
 
             return services;
         }

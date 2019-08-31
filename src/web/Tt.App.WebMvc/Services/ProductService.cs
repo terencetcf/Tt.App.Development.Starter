@@ -18,9 +18,9 @@ namespace Tt.App.WebMvc.Services
         public ProductService(
             IApiConfiguration apiConfiguration,
             IHttpContextAccessor httpContextAccessor,
-            HttpClient httpClient, 
+            IHttpClientFactory httpClientFactory, 
             ILogger<ProductService> logger) 
-            : base(apiConfiguration, httpContextAccessor, httpClient, logger)
+            : base(apiConfiguration, httpContextAccessor, httpClientFactory, logger)
         {
         }
 
