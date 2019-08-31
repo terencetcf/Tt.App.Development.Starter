@@ -13,7 +13,7 @@ namespace Tt.App.WebApi
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseSerilog((ctx, config) => { config.ReadFrom.Configuration(ctx.Configuration); })
-                .UseStartup<Startup>();
+                .UseStartup<Startup>()
+                .UseSerilog((ctx, config) => { config.ReadFrom.Configuration(ctx.Configuration); });
     }
 }
